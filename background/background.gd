@@ -8,8 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	queue_redraw()
-
+	pass
 
 func _draw():
 	draw_circle(Vector2(960, 540), 500, Color( 0.75, 0.75, 0.75, 1 ))
