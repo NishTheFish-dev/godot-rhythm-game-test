@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://2mn0fn4o5s1i"]
+[gd_scene load_steps=3 format=3 uid="uid://2mn0fn4o5s1i"]
 
 [ext_resource type="PackedScene" uid="uid://bl7fnuc5t8bap" path="res://background/background.tscn" id="1_4dk4m"]
+[ext_resource type="PackedScene" uid="uid://dd3nct0u7shfs" path="res://hud/hud.tscn" id="2_8rbyn"]
 
 [node name="main" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_4dk4m")]
+
+[node name="HUD" parent="." instance=ExtResource("2_8rbyn")]
