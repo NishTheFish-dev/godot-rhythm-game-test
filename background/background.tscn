@@ -3,9 +3,11 @@
 [ext_resource type="Script" path="res://background/background.gd" id="1_36asp"]
 
 [node name="Background" type="Node2D"]
+z_index = 1
 script = ExtResource("1_36asp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
 custom_minimum_size = Vector2(1920, 1080)
 offset_right = 1920.0
 offset_bottom = 1080.0
