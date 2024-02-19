@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cekddc2mhatd7"]
+[gd_scene load_steps=4 format=3 uid="uid://cekddc2mhatd7"]
 
 [ext_resource type="Script" path="res://Conductor/Conductor.gd" id="1_31vlk"]
 [ext_resource type="AudioStream" uid="uid://dtuigocttxsdi" path="res://Music/crystallized.mp3" id="2_18mex"]
+[ext_resource type="AudioStream" uid="uid://ddwj2b5prhha6" path="res://Music/Tick - Sound Effect (HD).mp3" id="3_itrxk"]
 
 [node name="Conductor" type="Node2D"]
 script = ExtResource("1_31vlk")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_18mex")
 volume_db = -28.549
+
+[node name="Metronome" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_itrxk")

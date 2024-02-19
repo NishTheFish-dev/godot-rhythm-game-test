@@ -4,32 +4,56 @@ extends Node2D
 var songBpm
 var secPerBeat 
 var songPosition
-var songPositionInBeats = 1
+var songPositionInBeats
+var spTemp = 0
+
+#Offset, in seconds
+@export var offset = 100
+
+#Metronome 
+var blinkerRect : float:
+	set(opacity):
+		blinkerRect = opacity
+		queue_redraw()
+
+
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
 	# Setup song BPM & audio track positioning
-	songBpm = $AudioStreamPlayer.stream.get_bpm()
-	secPerBeat = float(60 / $AudioStreamPlayer.stream.get_bpm())
-	songPosition = $AudioStreamPlayer.get_playback_position()
+	songBpm = $Music.stream.get_bpm()
+	secPerBeat = float(60 / $Music.stream.get_bpm())
+	songPosition = float($Music.get_playback_position() - offset)
 	songPositionInBeats = int(songPosition / secPerBeat)
-	$AudioStreamPlayer.play()
+	$Music.play()
 	
 	# Debug songPositionInBeats
 	var timer = Timer.new()
+	var delay = Timer.new()
 	timer.autostart = true
 	timer.wait_time = secPerBeat
+	delay.autostart = true
+	delay.wait_time = secPerBeat / 4
+	delay.one_shot = true
 	add_child(timer)
+	add_child(delay)
+	
 	timer.timeout.connect(func():
 		print(songPositionInBeats)
+		blinkerRect = 1
+		$Metronome.play()
+		delay.start(secPerBeat / 16)
+		delay.timeout.connect(func():
+			blinkerRect = 0.1
+		)
 	)
 
-
+func _draw():
+	draw_rect(Rect2(960, 540, 200, 100), Color( 0.75, 0.75, 0.75, blinkerRect))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 # Updates songPosition and songPositionInBeats every frame
-func _process(delta):
-	songPosition = $AudioStreamPlayer.get_playback_position()
+func _process(_delta):
+	songPosition = $Music.get_playback_position()
 	songPositionInBeats = int(songPosition / secPerBeat)
-	
 
