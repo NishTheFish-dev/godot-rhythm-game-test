@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://cekddc2mhatd7"]
+[gd_scene load_steps=3 format=3 uid="uid://cekddc2mhatd7"]
+
+[ext_resource type="Script" path="res://Conductor/Conductor.gd" id="1_31vlk"]
+[ext_resource type="AudioStream" uid="uid://dtuigocttxsdi" path="res://Music/crystallized.mp3" id="2_18mex"]
 
 [node name="Conductor" type="Node2D"]
+script = ExtResource("1_31vlk")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_18mex")
+volume_db = -28.549

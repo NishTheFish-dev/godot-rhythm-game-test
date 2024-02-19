@@ -1,11 +1,39 @@
 extends Node2D
 
-
+# Initial variables
+var songBpm
+var secPerBeat 
+var songPosition
+var songPositionInBeats = 1
 # Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
+	# Setup song BPM & audio track positioning
+	songBpm = $AudioStreamPlayer.stream.get_bpm()
+	secPerBeat = float(60 / $AudioStreamPlayer.stream.get_bpm())
+	songPosition = $AudioStreamPlayer.get_playback_position()
+	songPositionInBeats = int(songPosition / secPerBeat)
+	$AudioStreamPlayer.play()
+	
+	# Start both variables
+	songPosition = $AudioStreamPlayer.get_playback_position()
+	songPositionInBeats = floorf(songPosition / secPerBeat)
+	
+	# Debug songPositionInBeats
+	var timer = Timer.new()
+	timer.autostart = true
+	timer.wait_time = secPerBeat
+	add_child(timer)
+	timer.timeout.connect(func():
+		print(songPositionInBeats)
+	)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+# Updates songPosition and songPositionInBeats every frame
 func _process(delta):
-	pass
+	songPosition = $AudioStreamPlayer.get_playback_position()
+	songPositionInBeats = int(songPosition / secPerBeat)
+	
+
