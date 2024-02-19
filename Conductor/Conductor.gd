@@ -15,10 +15,6 @@ func _ready():
 	songPositionInBeats = int(songPosition / secPerBeat)
 	$AudioStreamPlayer.play()
 	
-	# Start both variables
-	songPosition = $AudioStreamPlayer.get_playback_position()
-	songPositionInBeats = floorf(songPosition / secPerBeat)
-	
 	# Debug songPositionInBeats
 	var timer = Timer.new()
 	timer.autostart = true
@@ -27,7 +23,7 @@ func _ready():
 	timer.timeout.connect(func():
 		print(songPositionInBeats)
 	)
-	
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
