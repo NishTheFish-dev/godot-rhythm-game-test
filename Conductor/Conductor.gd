@@ -4,7 +4,7 @@ extends Node2D
 var songBpm
 var secPerBeat 
 var songPosition
-var songPositionInBeats
+var songPositionInBeats = 1
 var spTemp = 0
 
 #Offset, in seconds
@@ -25,8 +25,30 @@ func _ready():
 	secPerBeat = float(60 / $Music.stream.get_bpm())
 	songPosition = float($Music.get_playback_position() - offset)
 	songPositionInBeats = int(songPosition / secPerBeat)
+	spTemp = 0
 	$Music.play()
 	
+	# Debug songPositionInBeats
+	#var timer = Timer.new()
+	#var delay = Timer.new()
+	#timer.autostart = true
+	#timer.wait_time = secPerBeat
+	#delay.autostart = true
+	#delay.wait_time = secPerBeat / 4
+	#delay.one_shot = true
+	#add_child(timer)
+	#add_child(delay)
+	
+	#timer.timeout.connect(func():
+	#	print(songPositionInBeats)
+	#	blinkerRect = 1
+	#	$Metronome.play()
+	#	delay.start(secPerBeat / 16)
+	#	delay.timeout.connect(func():
+	#		blinkerRect = 0.1
+	#	)
+	#)
+func blink() -> void:
 	# Debug songPositionInBeats
 	var timer = Timer.new()
 	var delay = Timer.new()
@@ -56,4 +78,7 @@ func _draw():
 func _process(_delta):
 	songPosition = $Music.get_playback_position()
 	songPositionInBeats = int(songPosition / secPerBeat)
+	if (songPositionInBeats > spTemp):
+		blink()
+		spTemp += songPositionInBeats
 
