@@ -49,17 +49,20 @@ func _ready():
 			#blinkerRect = 0.1
 		#)
 	#)
+
+#Makes the rectangle blink and plays a metronome noise
 func blink() -> void:
 	blinkerRect = 1
 	$Metronome.play()
 	await get_tree().create_timer(secPerBeat / 4).timeout
 	blinkerRect = 0.1
 	
+#Draw function for the rectangle
 func _draw():
 	draw_rect(Rect2(960, 540, 200, 100), Color( 0.75, 0.75, 0.75, blinkerRect))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-# Updates songPosition and songPositionInBeats every frame
+# Updates songPosition and songPositionInBeats every frame, as well as syncing the metronome to the beat (no lag issues!)
 func _process(_delta):
 	songPosition = float($Music.get_playback_position() - (offset / 1000))
 	songPositionInBeats = int(songPosition / secPerBeat)
