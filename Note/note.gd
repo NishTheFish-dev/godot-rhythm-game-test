@@ -1,6 +1,9 @@
-extends Node2D
+extends "res://Conductor/Conductor.gd"
 @export var noteSpeed = 1
 @export var userNoteSpeed = 1.8
+signal test
+
+enum {NOTESPEED = 1}
 
 #Variable arrays for drawing
 var one = [(175*PI/180), (140*PI/180), Color(0, 0, 1, 0.5)]
@@ -12,7 +15,8 @@ var notePlaceAndColor: Array:
 	set(placement):
 		notePlaceAndColor = placement
 		queue_redraw()
-	
+
+var beatPosition
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,15 +28,24 @@ func _ready():
 
 func notePlacement(position):
 	match position:
-		one:
+		"one":
 			notePlaceAndColor = one
-		two:
+			test.emit()
+		"two":
 			notePlaceAndColor = two
-		three:
+			test.emit()
+		"three":
 			notePlaceAndColor = three
-		four:
+			test.emit()
+		"four":
 			notePlaceAndColor = four
+			test.emit()
+
+func noteBeatmap(position, beatPos):
+	notePlacement(position)
+	beatPosition = beatPos
 	pass
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -42,7 +55,9 @@ func _process(delta):
 
 func _draw():
 	#Note originating at center and moving outward to the hit registration area
-	draw_arc(Vector2(960, 540), noteSpeed, notePlaceAndColor[0], notePlaceAndColor[1], 100, notePlaceAndColor[2], 20.0)
+	if (beatPosition < songPositionInBeats - (NOTESPEED + userNoteSpeed)):
+		print(songPositionInBeats)
+		draw_arc(Vector2(960, 540), noteSpeed, notePlaceAndColor[0], notePlaceAndColor[1], 100, notePlaceAndColor[2], 20.0)
 	
 func note() -> void:
 	pass

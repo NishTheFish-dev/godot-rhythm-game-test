@@ -29,6 +29,8 @@ func _ready():
 	spTemp = 0
 	$Music.play()
 	
+	$Note.noteBeatmap("one", 5)
+	
 	#Debug songPositionInBeats
 	#var timer = Timer.new()
 	#var delay = Timer.new()
