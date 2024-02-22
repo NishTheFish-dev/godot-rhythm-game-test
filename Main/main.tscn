@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bl7fnuc5t8bap" path="res://background/background.tscn" id="1_4dk4m"]
 [ext_resource type="PackedScene" uid="uid://dd3nct0u7shfs" path="res://hud/hud.tscn" id="2_8rbyn"]
-[ext_resource type="PackedScene" uid="uid://cdjwmy57rt7ln" path="res://Note/note.tscn" id="3_kqvgn"]
+[ext_resource type="PackedScene" uid="uid://bgtv73nd0hj24" path="res://Notemap/Notemap.tscn" id="2_jaspi"]
 
 [node name="main" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_4dk4m")]
 
-[node name="Note" parent="." instance=ExtResource("3_kqvgn")]
+[node name="Notemap" parent="." instance=ExtResource("2_jaspi")]
 
 [node name="HUD" parent="." instance=ExtResource("2_8rbyn")]

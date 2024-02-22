@@ -29,8 +29,6 @@ func _ready():
 	spTemp = 0
 	$Music.play()
 	
-	$Note.noteBeatmap("one", 5)
-	
 	#Debug songPositionInBeats
 	#var timer = Timer.new()
 	#var delay = Timer.new()
@@ -75,3 +73,9 @@ func _process(_delta):
 	#Debug time delay
 	#print(songPositionInBeats)
 	#print(spTemp)
+#Get beat position for notemap
+func _on_notemap_note_beatmap(beatPos):
+	#Get beat position from conductor class
+	beatPos = songPositionInBeats
+	
+	pass # Replace with function body.

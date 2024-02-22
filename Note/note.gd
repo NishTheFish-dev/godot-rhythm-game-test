@@ -1,4 +1,4 @@
-extends "res://Conductor/Conductor.gd"
+extends Node2D
 @export var noteSpeed = 1
 @export var userNoteSpeed = 1.8
 signal test
@@ -20,44 +20,35 @@ var beatPosition
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	notePlacement(two)
-	await get_tree().create_timer(1.0).timeout
-	notePlacement(three)
-	
 	pass # Replace with function body.
 
 func notePlacement(position):
-	match position:
-		"one":
-			notePlaceAndColor = one
-			test.emit()
-		"two":
-			notePlaceAndColor = two
-			test.emit()
-		"three":
-			notePlaceAndColor = three
-			test.emit()
-		"four":
-			notePlaceAndColor = four
-			test.emit()
-
-func noteBeatmap(position, beatPos):
-	notePlacement(position)
-	beatPosition = beatPos
 	pass
 
+#Debug
+#func noteBeatmap(position, beatPos):
+	#notePlacement(position)
+	#beatPosition = beatPos
+	#pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	noteSpeed = noteSpeed + userNoteSpeed
-	queue_redraw()
 	
+	queue_redraw()
 
 func _draw():
 	#Note originating at center and moving outward to the hit registration area
-	if (beatPosition < songPositionInBeats - (NOTESPEED + userNoteSpeed)):
-		print(songPositionInBeats)
-		draw_arc(Vector2(960, 540), noteSpeed, notePlaceAndColor[0], notePlaceAndColor[1], 100, notePlaceAndColor[2], 20.0)
-	
-func note() -> void:
-	pass
+	draw_arc(Vector2(960, 540), noteSpeed, notePlaceAndColor[0], notePlaceAndColor[1], 100, notePlaceAndColor[2], 20.0)
+
+#Get note placement for notemap
+func _on_notemap_note_placement(position):
+	match position:
+		"one":
+			notePlaceAndColor = one
+		"two":
+			notePlaceAndColor = two
+		"three":
+			notePlaceAndColor = three
+		"four":
+			notePlaceAndColor = four
