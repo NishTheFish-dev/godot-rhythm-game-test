@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://caefwwh60xewa"]
+
+[ext_resource type="Script" path="res://Main/testing.gd" id="1_fttyh"]
+[ext_resource type="Script" path="res://Main/Node2D.gd" id="2_gfesm"]
+[ext_resource type="Script" path="res://Main/Node2D2.gd" id="3_q1bo5"]
+
+[node name="Testing" type="Node2D"]
+visible = false
+script = ExtResource("1_fttyh")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("2_gfesm")
+
+[node name="Node2D2" type="Node2D" parent="."]
+script = ExtResource("3_q1bo5")
