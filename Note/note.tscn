@@ -1,7 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cdjwmy57rt7ln"]
+[gd_scene load_steps=2 format=3 uid="uid://bal1l5hwfybsg"]
 
-[ext_resource type="Script" path="res://Note/note.gd" id="1_i7yed"]
+[ext_resource type="Script" path="res://Note/Note.gd" id="1_5kxfm"]
 
 [node name="Note" type="Node2D"]
-z_index = 1
-script = ExtResource("1_i7yed")
+script = ExtResource("1_5kxfm")

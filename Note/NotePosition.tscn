@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdjwmy57rt7ln"]
+
+[ext_resource type="Script" path="res://Note/NotePosition.gd" id="1_8dc0j"]
+
+[node name="NotePosition" type="Node2D"]
+z_index = 1
+script = ExtResource("1_8dc0j")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = 1
