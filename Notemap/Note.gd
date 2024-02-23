@@ -31,9 +31,9 @@ var notePlaceAndColor: Array:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Setup song BPM & audio track positioning
-	songBpm = $Music.stream.get_bpm()
-	secPerBeat = float(60 / $Music.stream.get_bpm())
-	songPosition = float($Music.get_playback_position() - (offset / 1000))
+	songBpm = $Notemap/CreatedNote.stream.get_bpm() 
+	secPerBeat = float(60 / $Notemap/CreatedNote.stream.get_bpm())
+	songPosition = float($Notemap/CreatedNote.get_playback_position() - (offset / 1000))
 	songPositionInBeats = int(songPosition / secPerBeat)
 	spTemp = 0
 
@@ -43,7 +43,7 @@ func _process(delta):
 	noteSpeed = noteSpeed + userNoteSpeed
 	queue_redraw()
 	
-	songPosition = float($Music.get_playback_position() - (offset / 1000))
+	songPosition = float($Notemap/CreatedNote.get_playback_position() - (offset / 1000))
 	songPositionInBeats = int(songPosition / secPerBeat)
 	if (songPositionInBeats > spTemp):
 		blink()
@@ -56,6 +56,6 @@ func _draw():
 #Test function for metronome
 func blink() -> void:
 	blinkerRect = 1
-	$Metronome.play()
+	$Notemap/CreatedNote.play()
 	await get_tree().create_timer(secPerBeat / 4).timeout
 	blinkerRect = 0.1
