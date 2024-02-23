@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8ws414006cpn"]
+
+[ext_resource type="Script" path="res://Notemap/notemap.gd" id="1_nnnh3"]
+[ext_resource type="Script" path="res://Notemap/note.gd" id="2_uyf5w"]
+[ext_resource type="AudioStream" uid="uid://dtuigocttxsdi" path="res://Music/crystallized.mp3" id="3_yils8"]
+[ext_resource type="AudioStream" uid="uid://ddwj2b5prhha6" path="res://Music/Tick - Sound Effect (HD).mp3" id="4_5jxuh"]
+
+[node name="Notemap" type="Node2D"]
+script = ExtResource("1_nnnh3")
+
+[node name="Note" type="Node2D" parent="."]
+script = ExtResource("2_uyf5w")
+
+[node name="Music" type="AudioStreamPlayer" parent="Note"]
+stream = ExtResource("3_yils8")
+volume_db = -28.549
+
+[node name="Metronome" type="AudioStreamPlayer" parent="Note"]
+stream = ExtResource("4_5jxuh")
