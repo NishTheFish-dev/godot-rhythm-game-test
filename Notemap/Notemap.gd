@@ -1,8 +1,9 @@
 extends Node2D
-class_name Note
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Music.play()
+	place_note("two")
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -11,7 +12,7 @@ func _process(delta):
 
 
 #Main function to handle notes
-func place_note(position, beat):
+func place_note(position):
 	#Step 1: create the note as a Node
 	var note = Note.new()
 	note.name = "CreatedNote"

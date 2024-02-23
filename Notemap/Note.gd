@@ -1,5 +1,4 @@
-extends Node2D
-class_name Note
+class_name Note extends Node2D
 
 # Initial variables
 var songBpm
@@ -37,7 +36,6 @@ func _ready():
 	songPosition = float($Music.get_playback_position() - (offset / 1000))
 	songPositionInBeats = int(songPosition / secPerBeat)
 	spTemp = 0
-	$Music.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
