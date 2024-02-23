@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bal1l5hwfybsg"]
-
-[ext_resource type="Script" path="res://Note/TESTNote.gd" id="1_5kxfm"]
-
-[node name="Note" type="Node2D"]
-script = ExtResource("1_5kxfm")
