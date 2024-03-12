@@ -1,4 +1,4 @@
-class_name Note extends Node2D
+class_name Note extends "res://Notemap/notemap.gd"
 
 # Initial variables
 var songBpm
